@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="TituloPlatoCard">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.03</item> <!-- -3% -->
+        <item name="android:textColor">@color/black</item>
+    </style>
+</font-family>

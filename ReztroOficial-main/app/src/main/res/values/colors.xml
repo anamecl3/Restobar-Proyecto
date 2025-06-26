@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#FDFDFD</color>
+    <color name="input_stroke">#DADADA</color>
+    <!-- principales -->
+    <color name="main">#70B9BE</color>
+    <color name="text_gray">#575757</color>
+    <!-- textos -->
+    <color name="title_color">#0A2533</color>
+    <color name="text_color">#020202</color>
+    <color name="hint_color">#8D92A3</color>
+    <color name="important_text">#4A9FA4</color>
+    <color name="btn_color">#1E8D93</color>
+    <color name="edittext_background">#FFFFFFFF</color>
+</resources>
