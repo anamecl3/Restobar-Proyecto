@@ -10,6 +10,7 @@ class ListaReservasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.contenedorFragmentosReservas, ReservaFragment())
             .commit()

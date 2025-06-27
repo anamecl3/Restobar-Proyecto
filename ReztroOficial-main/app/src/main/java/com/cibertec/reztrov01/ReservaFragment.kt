@@ -1,6 +1,7 @@
 package com.cibertec.reztrov01
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,13 +28,23 @@ class ReservaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recyclerHistorial)
+        try {
+            dbHelper = ReztroDB(requireContext())
 
-        dbHelper = ReztroDB(requireContext())
+            val prefs = requireActivity().getSharedPreferences("usuarioPrefs", android.content.Context.MODE_PRIVATE)
+            val usuarioId = prefs.getInt("usuarioId", -1)
+            val usuario = dbHelper.obtenerUsuarioPorId(usuarioId)
 
-        listaHistorial.addAll(dbHelper.listarReservas())
-        adapter = ReservaAdapter(listaHistorial)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter
+            if (usuario != null) {
+                listaHistorial.addAll(dbHelper.listarReservasPorDni(usuario.dni))
+                adapter = ReservaAdapter(listaHistorial)
+                recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                recyclerView.adapter = adapter
+            }
+
+        } catch (e: Exception) {
+            Log.e("ReservaFragment", "Error al listar reservas", e)
+        }
 
     }
 

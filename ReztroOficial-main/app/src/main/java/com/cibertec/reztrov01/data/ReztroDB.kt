@@ -251,49 +251,24 @@ class ReztroDB(context: Context) : SQLiteOpenHelper(context, "ReztroDB", null, 1
         return lista
     }
 
-
-    fun listarReservasPorDni(dni: String): List<Reserva> {
-        val lista = mutableListOf<Reserva>()
-        val cursor = readableDatabase.rawQuery(
-            "SELECT nomUsuario, restaurante, fecha, horario, mesa, dni, qr FROM tbReserva WHERE dni = ?",
-            arrayOf(dni)
-        )
-
-        if (cursor.moveToFirst()) {
-            do {
-                val reserva = Reserva(
-                    nomUsuario = cursor.getString(cursor.getColumnIndexOrThrow("nomUsuario")),
-                    restaurante = cursor.getString(cursor.getColumnIndexOrThrow("restaurante")),
-                    fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha")),
-                    horario = cursor.getString(cursor.getColumnIndexOrThrow("horario")),
-                    mesa = cursor.getString(cursor.getColumnIndexOrThrow("mesa")),
-                    dni = cursor.getString(cursor.getColumnIndexOrThrow("dni")),
-                    qr = cursor.getString(cursor.getColumnIndexOrThrow("qr"))
-                )
-                lista.add(reserva)
-            } while (cursor.moveToNext())
-        }
-
-        cursor.close()
-        return lista
-    }
     fun listarReservas(): List<Reserva> {
         val lista = mutableListOf<Reserva>()
         val cursor = readableDatabase.rawQuery(
-            "SELECT nomUsuario, restaurante, fecha, horario, mesa, dni, qr FROM tbReserva",
+            "SELECT  nomUsuario, restaurante, fecha, horario, mesa, dni FROM tbReserva",
             null
         )
 
         if (cursor.moveToFirst()) {
             do {
                 val reserva = Reserva(
+                    id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
                     nomUsuario = cursor.getString(cursor.getColumnIndexOrThrow("nomUsuario")),
                     restaurante = cursor.getString(cursor.getColumnIndexOrThrow("restaurante")),
                     fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha")),
                     horario = cursor.getString(cursor.getColumnIndexOrThrow("horario")),
                     mesa = cursor.getString(cursor.getColumnIndexOrThrow("mesa")),
                     dni = cursor.getString(cursor.getColumnIndexOrThrow("dni")),
-                    qr = cursor.getString(cursor.getColumnIndexOrThrow("qr"))
+                    qr = "",
                 )
                 lista.add(reserva)
             } while (cursor.moveToNext())
@@ -302,6 +277,33 @@ class ReztroDB(context: Context) : SQLiteOpenHelper(context, "ReztroDB", null, 1
         cursor.close()
         return lista
     }
+    fun listarReservasPorDni(dni: String): List<Reserva> {
+        val lista = mutableListOf<Reserva>()
+        val cursor = readableDatabase.rawQuery(
+            "SELECT id, nomUsuario, restaurante, fecha, horario, mesa, dni FROM tbReserva WHERE dni = ?",
+            arrayOf(dni)
+        )
+
+        if (cursor.moveToFirst()) {
+            do {
+                val reserva = Reserva(
+                    id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                    nomUsuario = cursor.getString(cursor.getColumnIndexOrThrow("nomUsuario")),
+                    restaurante = cursor.getString(cursor.getColumnIndexOrThrow("restaurante")),
+                    fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha")),
+                    horario = cursor.getString(cursor.getColumnIndexOrThrow("horario")),
+                    mesa = cursor.getString(cursor.getColumnIndexOrThrow("mesa")),
+                    dni = cursor.getString(cursor.getColumnIndexOrThrow("dni")),
+                    qr = "QR"
+                )
+                lista.add(reserva)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        return lista
+    }
+
 
 
 }

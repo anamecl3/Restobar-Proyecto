@@ -1,5 +1,6 @@
 package com.cibertec.reztrov01
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ class ReservaAdapter(private val lista: List<Reserva>) :
         val tvUsuario: TextView = itemView.findViewById(R.id.tvUsuarioReserva)
         val tvRestaurante: TextView = itemView.findViewById(R.id.tvRestauranteReserva)
         val tvFecha: TextView = itemView.findViewById(R.id.tvFechaReserva)
-        val tvHora: TextView = itemView.findViewById(R.id.tvHoraReserva)
+        val tvHora: TextView = itemView.findViewById(R.id.tvHorarioReserva)
         val tvMesa: TextView = itemView.findViewById(R.id.tvMesaReserva)
     }
 
@@ -27,11 +28,11 @@ class ReservaAdapter(private val lista: List<Reserva>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = lista[position]
-        holder.tvUsuario.text = item.nomUsuario
+        holder.tvUsuario.text = "Reserva :  ${item.id} - ${item.nomUsuario}"
         holder.tvRestaurante.text = "Restaurante : ${item.restaurante}"
         holder.tvFecha.text = "Fecha: ${item.fecha}"
         holder.tvHora.text = "Hora: ${item.horario} "
-        holder.tvMesa.text = "Hora: ${item.mesa } "
+        holder.tvMesa.text = "Mesa: ${item.mesa } "
 
     }
 

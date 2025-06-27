@@ -44,6 +44,7 @@ class ResumenReservaActivity : AppCompatActivity() {
 
         btnConfirmar.setOnClickListener {
             val reserva = Reserva(
+                id=0,//se genera automaticamente
                 nomUsuario = nombre,
                 dni = dni,
                 restaurante = restaurante,

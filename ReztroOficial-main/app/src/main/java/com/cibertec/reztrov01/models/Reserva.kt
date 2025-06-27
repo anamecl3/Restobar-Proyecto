@@ -7,5 +7,6 @@ data class Reserva(
     val horario : String,
     val mesa : String,
     val dni: String,
-    val qr: String
+    val qr: String,
+    val id: Int
 )
