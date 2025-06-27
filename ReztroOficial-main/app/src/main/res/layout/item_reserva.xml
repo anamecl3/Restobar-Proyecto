@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="4dp"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvUsuarioReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Usuario"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/tvRestauranteReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Restaurante: La tia veneno"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/tvFechaReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha: 19/08/1993"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/tvHorarioReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horario: "
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/tvMesaReserva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mesa: XX"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

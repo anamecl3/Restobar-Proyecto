@@ -1,9 +1,11 @@
-package com.cibertec.reztrov01
+package com.cibertec.reztrov01.data
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.cibertec.reztrov01.R
+import com.cibertec.reztrov01.Usuario
 import com.cibertec.reztrov01.models.Reserva
 import com.cibertec.reztrov01.models.Restaurant
 
@@ -245,6 +247,58 @@ class ReztroDB(context: Context) : SQLiteOpenHelper(context, "ReztroDB", null, 1
                 )
             } while (cursor.moveToNext())
         }
+        cursor.close()
+        return lista
+    }
+
+
+    fun listarReservasPorDni(dni: String): List<Reserva> {
+        val lista = mutableListOf<Reserva>()
+        val cursor = readableDatabase.rawQuery(
+            "SELECT nomUsuario, restaurante, fecha, horario, mesa, dni, qr FROM tbReserva WHERE dni = ?",
+            arrayOf(dni)
+        )
+
+        if (cursor.moveToFirst()) {
+            do {
+                val reserva = Reserva(
+                    nomUsuario = cursor.getString(cursor.getColumnIndexOrThrow("nomUsuario")),
+                    restaurante = cursor.getString(cursor.getColumnIndexOrThrow("restaurante")),
+                    fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha")),
+                    horario = cursor.getString(cursor.getColumnIndexOrThrow("horario")),
+                    mesa = cursor.getString(cursor.getColumnIndexOrThrow("mesa")),
+                    dni = cursor.getString(cursor.getColumnIndexOrThrow("dni")),
+                    qr = cursor.getString(cursor.getColumnIndexOrThrow("qr"))
+                )
+                lista.add(reserva)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        return lista
+    }
+    fun listarReservas(): List<Reserva> {
+        val lista = mutableListOf<Reserva>()
+        val cursor = readableDatabase.rawQuery(
+            "SELECT nomUsuario, restaurante, fecha, horario, mesa, dni, qr FROM tbReserva",
+            null
+        )
+
+        if (cursor.moveToFirst()) {
+            do {
+                val reserva = Reserva(
+                    nomUsuario = cursor.getString(cursor.getColumnIndexOrThrow("nomUsuario")),
+                    restaurante = cursor.getString(cursor.getColumnIndexOrThrow("restaurante")),
+                    fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha")),
+                    horario = cursor.getString(cursor.getColumnIndexOrThrow("horario")),
+                    mesa = cursor.getString(cursor.getColumnIndexOrThrow("mesa")),
+                    dni = cursor.getString(cursor.getColumnIndexOrThrow("dni")),
+                    qr = cursor.getString(cursor.getColumnIndexOrThrow("qr"))
+                )
+                lista.add(reserva)
+            } while (cursor.moveToNext())
+        }
+
         cursor.close()
         return lista
     }

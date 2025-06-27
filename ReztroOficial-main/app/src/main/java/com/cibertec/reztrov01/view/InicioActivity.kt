@@ -1,6 +1,8 @@
 package com.cibertec.reztrov01.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
@@ -11,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cibertec.reztrov01.R
-import com.cibertec.reztrov01.ReztroDB
+import com.cibertec.reztrov01.data.ReztroDB
 import com.cibertec.reztrov01.controller.RestaurantsAdapters
 import com.cibertec.reztrov01.controller.ScrollDistrictAdapter
 
@@ -22,6 +24,7 @@ class InicioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
+
 
         db = ReztroDB(this)
 
@@ -63,6 +66,13 @@ class InicioActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val btnPerfil = findViewById<ImageButton>(R.id.btnPerfil)
+
+        btnPerfil.setOnClickListener {
+            val intent = Intent(this, ListaReservasActivity::class.java)
+            startActivity(intent)
         }
     }
 

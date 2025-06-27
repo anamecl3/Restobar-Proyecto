@@ -3,8 +3,6 @@ package com.cibertec.reztrov01
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
+import com.cibertec.reztrov01.data.ReztroDB
+
 class UsuarioFragment : Fragment() {
 
     private lateinit var etNombreUsuario: EditText

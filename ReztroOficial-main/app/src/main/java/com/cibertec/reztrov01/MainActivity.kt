@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cibertec.reztrov01.data.ReztroDB
 import com.cibertec.reztrov01.view.InicioActivity
 
 class MainActivity : AppCompatActivity() {

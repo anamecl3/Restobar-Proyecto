@@ -129,6 +129,7 @@
                 android:clipToPadding="false"
                 android:paddingBottom="8dp"
                 tools:listitem="@layout/item_restaurant" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <!-- end of restaurants section -->
@@ -184,10 +185,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/usuario"
-            android:contentDescription="Perfil"/>
+            android:contentDescription="Perfil"
+            android:scaleType="centerInside"
+            android:src="@drawable/usuario" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,14 @@
 package com.cibertec.reztrov01
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cibertec.reztrov01.data.ReztroDB
 import com.cibertec.reztrov01.models.Reserva
+import com.cibertec.reztrov01.view.InicioActivity
 
 class ResumenReservaActivity : AppCompatActivity() {
 
@@ -56,7 +59,12 @@ class ResumenReservaActivity : AppCompatActivity() {
                 Toast.makeText(this, "Ya tienes una reserva para ese día y hora", Toast.LENGTH_SHORT).show()
             } else if (db.registrarReserva(reserva)) {
                 Toast.makeText(this, "¡Reserva confirmada!", Toast.LENGTH_LONG).show()
+
+                val intent = Intent(this, InicioActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
                 finish()
+
             } else {
                 Toast.makeText(this, "Error al registrar la reserva", Toast.LENGTH_SHORT).show()
             }
